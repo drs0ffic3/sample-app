@@ -6,6 +6,8 @@ language: ruby
 cache: bundler
 rvm:
   - "2.2.2"
+before_script:
+  - cp secrets.yml.sample secrets.yml
 script:
   - bundle exec rubocop -Dc .rubocop.yml
   - bundle exec rspec
