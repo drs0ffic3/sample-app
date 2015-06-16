@@ -1,9 +1,25 @@
+env:
+  global:
+    - secure: "Kjq75Yt5l5XP42v3st702chITPoW/FoiC3gB04kW1L/unHj5oc2emGfFtArT+aOu+wdug84rLD5QCC6n6HP9Vmb1MBduu9UG43DG/cmsy5GmXhtkK51bMrl4HKmitp6o55Nn66DOy8AGbn+Kyc2GUZ4KetCgcqktB+byajVffg8MqqPaBthyhUvRJ1EAzufUh2UTN0B+X5VpsYb3pmk/h1qdSqlpGXKzJSDfByjR3vDdJ/lGi5FmsTqFPlAZWO+GWnoFwujjZXhgubq/rG7LzJBlpckPiE/RL3hJkUPY3raEy4JtkTBzs0sYS8xXaqTZ8PzlN4j7jyv5U0OhUpiD5mZ5mGmMcGPFG9Rm5ftreZO4eaye6eZO6wf9Kg9purA8wsN+e33QpSTRXbrUzzF3Ax4SDvAfz45UnMoXaiGB4e314ug7sf6rOiaSNGCTEFSdE9zgN28go44Kgx5/J9/gQncNTd4QAZeUGKNJ0sdk2HLqM5tGopohPQ+SERcEzLGbkeQc3Oc/J+36cMvWMKZEgkBVfKTF2hUDk+4kT+kZ+hrLieALTqXsyU/0X/YPwMNBwMle6q8heFGdkdQU/T9uB4bWvCeq20oMNgdPrlIDqpSJRzIMnRMhjGEogahNhbhu6JTLY1MkIj0POJ4FtdYNRxti35k6xH0WHfy1KZYyhiM="
+
 language: ruby
 rvm:
   - "2.2.2"
 script:
   - bundle exec rubocop -Dc .rubocop.yml
-deploy:
-  provider: heroku
-  api_key: $heroku_key
-  app: excella-rails-skeleton
+after_script:
+  # Install the Heroku gem (or the Heroku toolbelt)
+  - gem install heroku
+  # Add your Heroku git repo:
+  - git remote add heroku git@heroku.com:excella-rails-skeleton.git
+  # Turn off warnings about SSH keys:
+  - echo "Host heroku.com" >> ~/.ssh/config
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
+  # Clear your current Heroku SSH keys:
+  - heroku keys:clear
+  # Add a new SSH key to Heroku
+  - yes | heroku keys:add
+  # Push to Heroku!
+  - yes | git push heroku master
