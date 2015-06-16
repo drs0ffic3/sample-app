@@ -39,9 +39,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
-  gem 'rspec-rails'
-
   gem 'pry'
   gem 'rubocop', '0.29.1'
 end
@@ -49,6 +46,19 @@ end
 group :test do
   gem 'sqlite3', '~> 1.3.9'
   gem 'activerecord-nulldb-adapter'
+end
+
+group :acceptance, :travis do
+  gem 'cucumber-rails', '~> 1.4.1', :require => false
+  gem 'database_cleaner', '~> 1.3.0'
+  gem 'capybara-screenshot', '~> 1.0.4'
+  gem 'poltergeist', '~> 1.5.1'
+  gem 'launchy', '~> 2.4.2'
+  gem 'rack_session_access', '~> 0.1.1'
+end
+
+group :acceptance, :test, :travis do
+  gem 'rspec-rails'
 end
 
 gem 'rails_12factor', group: :production
