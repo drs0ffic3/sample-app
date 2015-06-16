@@ -8,6 +8,8 @@ notifications:
   slack: excella-4th:D0zR7CRDJdhg07kKkO2Axq9Y
 rvm:
   - "2.2.2"
+before_script:
+  - cp secrets.yml.sample secrets.yml
 script:
   - bundle exec rubocop -Dc .rubocop.yml
   - bundle exec rspec
