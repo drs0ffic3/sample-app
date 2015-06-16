@@ -3,3 +3,7 @@ rvm:
   - "2.2.2"
 script:
   - bundle exec rubocop -Dc .rubocop.yml
+deploy:
+  provider: heroku
+  api_key: $heroku_key
+  app: excella-rails-skeleton
