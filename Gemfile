@@ -43,10 +43,12 @@ group :development, :test do
   gem 'rspec-rails'
 
   gem 'pry'
+  gem 'rubocop', '0.29.1'
 end
 
 group :test do
-  gem 'rubocop', '0.29.1'
+  gem 'sqlite3', '~> 1.3.9'
+  gem 'activerecord-nulldb-adapter'
 end
 
 gem 'rails_12factor', group: :production
