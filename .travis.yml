@@ -17,7 +17,7 @@ script:
   - bundle exec rubocop -Dc .rubocop.yml
   - bundle exec rspec
   - rake cucumber RAILS_ENV=travis
-after_script:
+after_success:
 - gem install heroku
 - git remote add heroku git@heroku.com:excella-rails-skeleton.git
 - echo "Host heroku.com" >> ~/.ssh/config
