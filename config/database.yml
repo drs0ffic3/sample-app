@@ -20,6 +20,11 @@ default: &default
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
+  pool: 5
+  username: <%= Rails.application.secrets[:DATABASE_USERNAME] %>
+  password: <%= Rails.application.secrets[:DATABASE_PASSWORD] %>
+  host: <%= Rails.application.secrets[:DATABASE_IP] %>
+  port: 5432
 
 development:
   <<: *default
