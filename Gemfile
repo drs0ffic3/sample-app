@@ -43,6 +43,10 @@ group :development, :test do
   gem 'pry'
 end
 
+group :test do
+  gem 'rubocop', '0.29.1'
+end
+
 gem 'rails_12factor', group: :production
 
 ruby '2.2.2'
