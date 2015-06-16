@@ -4,6 +4,8 @@ env:
 
 language: ruby
 cache: bundler
+notifications:
+  slack: excella-4th:D0zR7CRDJdhg07kKkO2Axq9Y
 rvm:
   - "2.2.2"
 script:
