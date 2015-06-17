@@ -11,13 +11,15 @@ notifications:
 rvm:
 - 2.2.2
 before_script:
-  - rake db:create db:migrate
-  - rake db:create db:migrate RAILS_ENV=travis
+- rake db:create db:migrate
+- rake db:create db:migrate RAILS_ENV=travis
 script:
-  - bundle exec rubocop -Dc .rubocop.yml
-  - bundle exec rspec
-  - rake cucumber RAILS_ENV=travis
+- bundle exec rubocop -Dc .rubocop.yml
+- bundle exec rspec
+- rake cucumber RAILS_ENV=travis
 deploy:
   provider: heroku
   app:
     master: excella-rails-skeleton
+  api_key:
+    secure: OsmydFL/SGc3lDrIsP6iqNCqR6P3+feLa4wrUTYD0zP99mem+LFIwWOsU/65kCKzegHKK2qBh5hkbJmAjQjkDs694XJGDRxuIwZnWlazC7/KCcJQf0P4zsXSZMyP8TM4IOvX62O5XBymJWPiJbFFuOcj71K+wu42N6UcWRVxxqhrYG3w67CSPtpkfCg83d9hNrfnZEiiW8q/XPGCH+v1qoSgoeGe0qDY+Dp9snBJwB9R9BSe/bQUQdRBhJcrOR173D9a8yUfAtZKG2j3xcGU+T146qattEJlUpOQY1Ukd1i5yfi7MVnt1APfgu0rZNuay6G05zEtj8ARQigrLxGJmszcG6aPMsr44OZ2HOfz6512u5A1wSqKG0pluoO53JXZMuSMRGbIoxJgYDyDBhNYw/LMwqFs32T77qlOf9+VR2tq+RDfNoJdIfp5h99jYCG4hJnzQQC+jvH39Wu9e8BG4Si6JVpEhRRMOgZ+RoeAdrxW4mOTM+rzTWV/7aBkJHR7rNURBe931GSlEEHSa28X0yRtF794D9prSX3UY95g+Y7IW8Oi3RG5OUlmcFfmLlK2mgaGc4OOu0Dp/yeorpDTmX5WPr1D7O505lnhDuKDMAAFX32GjBjCfoxNg3HVOq1k23ALXfeoKpUqJkedEGCjD85K/a5w8qTc6dcWT9YKcwI=
