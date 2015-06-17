@@ -18,6 +18,6 @@ script:
   - bundle exec rspec
   - rake cucumber RAILS_ENV=travis
 deploy:
-  -provider: heroku
+  provider: heroku
   app:
     master: excella-rails-skeleton
